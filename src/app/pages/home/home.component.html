@@ -1,0 +1,352 @@
+<!-- <div>
+  <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-list-4">
+      <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Dashboard</a>
+            <a class="dropdown-item" href="#">Edit Profile</a>
+            <a class="dropdown-item" href="#">Log Out</a>
+          </div>
+        </li>   
+      </ul>
+    </div>
+  </nav>
+  <div class="container-general w-100 h-100 p-0 d-flex align-items-center align-content-center justify-content-center ">
+    <div class="jumbotron style-container bg-white rounded  p-4">
+      <div  class="w-100  d-flex justify-content-between align-items-center align-content-center flex-row flex-wrap mb-3">
+        <h1>Lista de Productos </h1>
+        <button (click)="changeModal(false, 0)" class="btn btn-success py-0 px-3" data-toggle="modal" data-target="#modalcreate">
+          <svg id="i-file" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <path d="M6 2 L6 30 26 30 26 10 18 2 Z M18 2 L18 10 26 10" />
+          </svg>
+          Nuevo Producto
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-borderless table-fixed">
+          <thead class="border-bottom border-top">
+            <tr class="font-weight-bold">
+              <th scope="col">#</th>
+              <th scope="col">Nombres</th>
+              <th scope="col">Caracteristicas</th>
+              <th scope="col">Fecha lanzamiento</th>
+              <th scope="col">Correo fabricante</th>
+              <th scope="col">Pais del fabricante</th>
+              <th scope="col">Precio</th>
+              <th scope="col"># Disponibles</th>
+              <th scope="col"># vendidas</th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let producto of getProductos; index as i">
+              <th scope="row" class="">{{i+1}}</th>
+              <td>{{producto["nombre"]}}</td>
+              <td>{{producto["caracteristicas"]}}</td>
+              <td>{{producto["fechaLanz"]}}</td>
+              <td>{{producto["correoFab"]}}</td>
+              <td>{{producto["paisFab"]}}</td>
+              <td>{{producto["precio"]}}</td>
+              <td>{{producto["uniDisp"]}}</td>
+              <td>{{producto["unidVend"]}}</td>
+  
+              <td class="d-flex align-items-center align-content-center justify-content-start flex-row">
+                <button (click)="deleteProducto(producto['_id'])" class="btn btn-danger py-0 px-3 mr-1">
+                  <svg id="i-trash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M28 6 L6 6 8 30 24 30 26 6 4 6 M16 12 L16 24 M21 12 L20 24 M11 12 L12 24 M12 6 L13 2 19 2 20 6" />
+                  </svg>
+                </button>
+                <button (click)="changeModal(true, producto)" data-toggle="modal" data-target="#modalcreate" class="btn btn-success py-0 px-3">
+                  <svg id="i-compose" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  
+  
+  </div>
+</div> -->
+ 
+
+<div id="wrapper">
+  <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar-list-4"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-list-4">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img
+              src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+              width="40"
+              height="40"
+              class="rounded-circle"
+            />
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Dashboard</a>
+            <a class="dropdown-item" href="#">Edit Profile</a>
+            <a class="dropdown-item" href="#">Log Out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+          <a
+            href="#"
+            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+          >
+            <i class="fas fa-download fa-sm text-white-50"></i> Generate
+            Report</a
+          >
+        </div>
+
+        <!-- Data table -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3 d-flex flex-row justify-content-between">
+            <h3 class="m-0 font-weight-bold text-primary">
+              Registro de asistencia
+            </h3>
+            
+
+            <a
+            (click)="changeModal(false, 0)"
+              class="btn btn-success btn-circle btn-sm m-1"
+              data-toggle="modal" data-target="#modalcreate"
+            >
+              Registrar producto
+            </a>
+          </div>
+          <div class="card-body">
+            <mat-label>Buscar registro: </mat-label>
+            <mat-form-field>
+              <input
+                matInput
+                (keyup)="applyFilter($event)"
+                placeholder="......Escriba aquí......"
+                #input
+              />
+            </mat-form-field>
+            <div class="mat-elevation-z8">
+              <div class="table-responsive">
+                <table
+                  mat-table
+                  [dataSource]="dataSource"
+                  class="table"
+                  width="100%"
+                >
+                  <!-- Fecha Column -->
+                  <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.nombre }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="caracteristicas">
+                    <th mat-header-cell *matHeaderCellDef>Caracteristicas</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.caracteristicas }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="fechaLanz">
+                    <th mat-header-cell *matHeaderCellDef>fechaLanz</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.fechaLanz }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="correoFab">
+                    <th mat-header-cell *matHeaderCellDef>correoFab</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.correoFab }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="paisFab">
+                    <th mat-header-cell *matHeaderCellDef>paisFab</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.paisFab }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="precio">
+                    <th mat-header-cell *matHeaderCellDef>precio</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.precio }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="uniDisp">
+                    <th mat-header-cell *matHeaderCellDef>uniDisp</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.uniDisp }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="unidVend">
+                    <th mat-header-cell *matHeaderCellDef>unidVend</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.unidVend }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="state">
+                    <th mat-header-cell *matHeaderCellDef>Estado</th>
+                    <td mat-cell *matCellDef="let element">
+                      <ng-container *ngIf="element.state; else elseTemplate">
+                        <span
+                          class="btn btn-primary m-2 py-0 px-2"
+                          style="font-size: 13px"
+                          >Activo</span
+                        >
+                      </ng-container>
+                      <ng-template #elseTemplate>
+                        <span
+                          class="btn btn-danger m-2 py-0 px-2"
+                          style="font-size: 13px"
+                          >Inactivo</span
+                        >
+                      </ng-template>
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                    <td mat-cell *matCellDef="let element">
+                      <button (click)="deleteProducto(element._id)" class="btn btn-danger py-0 px-3 mr-1">
+                        <svg id="i-trash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                          <path d="M28 6 L6 6 8 30 24 30 26 6 4 6 M16 12 L16 24 M21 12 L20 24 M11 12 L12 24 M12 6 L13 2 19 2 20 6" />
+                        </svg>
+                      </button>
+                      <button (click)="changeModal(true, element)" data-toggle="modal" data-target="#modalcreate" class="btn btn-success py-0 px-3">
+                        <svg id="i-compose" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                          <path d="M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z" />
+                        </svg>
+                      </button>
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                  <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+                </table>
+              </div>
+
+              <mat-paginator
+                [pageSizeOptions]="[5]"
+                showFirstLastButtons
+              ></mat-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+
+      <!-- <app-update-users></app-update-users> -->
+    </div>
+    <!-- End of Main Content -->
+  </div>
+  <!-- End of Content Wrapper -->
+
+  <div class="modal fade" id="modalcreate" #cyu tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h4 *ngIf="chModal==0" class="w-100 mb-3">Nuevo Producto</h4>
+          <h4 *ngIf="chModal==1" class="w-100 mb-3">Actualizar Producto</h4>
+          <form [formGroup]="myForm" (ngSubmit)="operation()" novalidate>
+            
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Nombre</label>
+              <input [(ngModel)]="dataupdate.nombre" type="text" formControlName="nombre" class="form-control" id="exampleFormControlInput1">
+              
+            </div>
+  
+             <div class="form-group">
+              <label for="exampleFormControlInput1">Caracteristicas</label>
+              <input [(ngModel)]="dataupdate.caracteristicas"  type="text" formControlName="caracteristicas" class="form-control" id="exampleFormControlInput1">
+             
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Fecha de lanzamiento</label>
+              <input [(ngModel)]="dataupdate.fechaLanz"  type="date" formControlName="fechaLanz" class="form-control" id="exampleFormControlInput1">
+              
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Correo del fabricante</label>
+              <input [(ngModel)]="dataupdate.correoFab"  type="email" formControlName="correoFab" class="form-control" id="exampleFormControlInput1">
+              
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Pais fabricante</label>
+              <input [(ngModel)]="dataupdate.paisFab"  type="text" formControlName="paisFab" class="form-control" id="exampleFormControlInput1">
+              
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Precio</label>
+              <input [(ngModel)]="dataupdate.precio"  type="number" min="0" formControlName="precio" class="form-control" id="exampleFormControlInput1">
+             
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Unidades disponibles</label>
+              <input [(ngModel)]="dataupdate.uniDisp"  type="number" min="0" formControlName="uniDisp" class="form-control" id="exampleFormControlInput1">
+             
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Unidades vendidas</label>
+              <input [(ngModel)]="dataupdate.unidVend"  type="number" min="0" formControlName="unidVend" class="form-control" id="exampleFormControlInput1">
+              
+            </div>
+            <button type="submit"  class="btn btn-primary">Aceptar</button>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

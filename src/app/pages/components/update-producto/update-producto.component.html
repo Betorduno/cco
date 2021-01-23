@@ -1,0 +1,49 @@
+<div>
+  <h1 mat-dialog-title>Actualizar asistencia</h1>
+  <div mat-dialog-content class="d-flex align-content-center align-items-center justify-content-center">
+    <form class="example-form" (ngSubmit)="updateAssistance()" [formGroup]="assist" novalidate>
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>Nota</mat-label>
+        <textarea matInput placeholder="Escriba aquí......." formControlName="note"></textarea>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>Hora</mat-label>
+        <input matInput 
+        matTimepicker
+        formControlName="time"
+        mode="24h"
+        > 
+      </mat-form-field>
+        
+  
+        <mat-form-field class="example-full-width">
+          <input type="text"
+                 placeholder="Usuario"
+                 aria-label="Number"
+                 matInput
+                 formControlName="user"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option._id">
+              {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+  
+        <div class="button-row">
+          <button mat-raised-button color="warn" mat-dialog-close class="buttons">Cerrar</button>
+          <button mat-raised-button color="primary" [disabled]="assist.invalid" class="buttons">Actualizar</button>
+        </div>
+    </form>
+  </div>
+  
+  
+</div>
